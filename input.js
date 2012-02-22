@@ -8,8 +8,8 @@ curl -u xxx@xxx \
 var test = require('testling');
 var attributes = [
     'accept'
-  , 'autoComplete'
-  , 'autoFocus'
+  , 'autocomplete'
+  , 'autofocus'
   , 'checked'
   , 'list'
   , 'max'
@@ -27,8 +27,12 @@ var attributes = [
 test('input', function (t) {
   var $input = document.createElement('input');
   for (var i=0; i<attributes.length; i+=1 ) {
-    if (!(attributes[i] in $input)) t.log('`' + attributes[i] + '` not supported');
-    // t.log(['attribute `' + attributes[i] + ' in input` : ', attributes[i] in $input ]);
+    switch (attributes[i]) {
+      //case 'autocomplete'
+      default:
+        if (!(attributes[i] in $input)) t.log('`' + attributes[i] + '` not supported');
+        // t.log(['attribute `' + attributes[i] + ' in input` : ', attributes[i] in $input ]);
+    }
   }
   t.end();
 });
