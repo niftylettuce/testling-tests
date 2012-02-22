@@ -27,7 +27,8 @@ var attributes = [
 test('input', function (t) {
   var $input = document.createElement('input');
   for (var i=0; i<attributes.length; i+=1 ) {
-    t.log(['attribute `' + attributes[i] + ' in input` : ', attributes[i] in $input ]);
+    if (!(attributes[i] in $input)) t.log('`' + attributes[i] + '` not supported');
+    // t.log(['attribute `' + attributes[i] + ' in input` : ', attributes[i] in $input ]);
   }
   t.end();
 });
